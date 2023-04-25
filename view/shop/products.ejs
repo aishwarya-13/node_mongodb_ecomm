@@ -1,0 +1,36 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/nav.ejs') %>
+
+<div>
+    <h1>Welcome to Aishwarya's</h1>
+    <ul>
+    <% if(products.length){ 
+        for(let item of products){ %>
+            <li>
+                <div>
+                    <img src="<%= item.imageUrl %>" alt="<%= item.imageUrl %>"/>
+                    <div><%= item.title %></div>
+                    <div><%= item.price %> rupees</div>
+                    <label>Description:</label>
+                    <div><%= item.description %></div>
+                </div>
+                <div>
+                    <div>
+                        <a href="/products/<%= item._id%>">
+                            <button>Details</button>
+                        </a>
+                    </div>
+                    <% if(isAuthenticated) { %>
+                    <div>
+                        <a href="/add-to-cart/<%=item._id%>">
+                            <button>Add to Cart</button>
+                        </a>
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>"/>
+                    </div> 
+                    <% } %>   
+                </div>
+            </li>
+            <% } }%>
+    </ul>       
+</div>
+<%- include('../includes/footer.ejs') %>

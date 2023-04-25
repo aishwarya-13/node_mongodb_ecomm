@@ -1,0 +1,35 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/nav.ejs') %>
+
+<div>
+    <div>
+        <h1>Aishwarya's Cart</h1>
+        <ul>
+        <% if(cart.length){ 
+            for(let product of cart){ %>
+                <li>
+                    <div>
+                        <img src="<%= product.imageUrl %>" alt="<%= product.imageUrl %>"/>
+                        <div><%= product.title %></div>
+                        <div><%= product.price %> rupees</div>
+                        <div><%= product.description %></div>
+                        <label>Quantity:</label>
+                        <span><%= product.quantity%></span>
+                        <div>
+                            <a href='/delete/cart-item/<%=product._id %>'>
+                            <button>Delete</button> 
+                            </a>
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>"/>
+                        </div>
+                    </div>
+                </li>
+                <% } }%>
+        </ul>
+        <div>
+            <a href='/place-order'>
+                <button>Order</button>
+            </a>
+        </div>
+    </div>       
+</div>
+<%- include('../includes/footer.ejs') %>

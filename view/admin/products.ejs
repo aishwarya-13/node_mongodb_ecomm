@@ -1,0 +1,32 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/nav.ejs') %>
+
+<div>
+    <h1>Welcome admin</h1>
+    <ul>
+    <% if(products.length){ 
+        for(let item of products){ %>
+            <li>
+                <div>
+                    <img src="<%= item.imageUrl %>" alt="<%= item.imageUrl %>"/>
+                    <div><%= item.title %></div>
+                    <div><%= item.price %> rupees</div>
+                    <label>Description:</label>
+                    <div><%= item.description %></div>
+                </div>
+                <div>
+                    <div>
+                        <a href="/admin/edit-product/<%= item._id%>">
+                            <button>Edit</button>
+                        </a>
+                        <a href="/admin/delete-product/<%= item._id%>">
+                            <button>Delete</button>
+                        </a>
+                    </div>
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>"/>
+                </div>
+            </li>
+            <% } }%>
+    </ul>       
+</div>
+<%- include('../includes/footer.ejs') %>

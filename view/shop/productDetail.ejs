@@ -1,0 +1,19 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/nav.ejs') %>
+
+<div>
+    <% if(productInfo){%>
+    <div>
+        <label>Title:</label>
+        <div><%= productInfo.title%></div>
+        <label>Price:</label>
+        <div><%= productInfo.price%></div>
+        <label>Description:</label>
+        <div><%= productInfo.description%></div>
+        <label>URL:</label>
+        <div><%= productInfo.imageUrl%></div> 
+    </div>
+<%}%>
+       
+</div>
+<%- include('../includes/footer.ejs') %>

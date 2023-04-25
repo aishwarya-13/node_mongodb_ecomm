@@ -1,0 +1,44 @@
+<body>
+    <header>
+        <ul>
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="/products">Shop</a>
+            </li>
+            <% if(isAuthenticated) { %>
+            <li>
+                <a href="/cart">Cart</a>
+            </li>
+            <li>
+                <a href="/orders">Orders</a>
+            </li>            
+            <li>
+                <a href="/admin/products">Admin Products</a>
+            </li>
+            <li>
+                <a href="/admin/add-product">Add Product</a>
+            </li>
+            <% } %>
+        </ul>        
+        <ul>
+            <% if(!isAuthenticated) { %>
+                <li>
+                    <a href="/login">Login</a>
+                </li>
+                <li>
+                    <a href="/signUp">Sign Up</a>
+                </li>
+            <% } %>
+            <% if(isAuthenticated) { %>
+                <li>
+                    <form action="/logout" method="POST">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>"/>
+                        <button type="submit">Logout</button>
+                    </form>
+                </li> 
+            <% } %>  
+        </ul>
+        
+    </header>

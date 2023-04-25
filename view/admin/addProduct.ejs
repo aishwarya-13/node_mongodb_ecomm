@@ -1,0 +1,29 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/nav.ejs') %>
+<form action='/admin/<%= isEdit ? "update-product" : "product" %>' method='POST'>
+    <div>
+        <label>Title:</label>
+        <input type='text' name='title' value='<%= isEdit ? productInfo.title : ""%>' placeholder="Title of the product"/>
+    </div>
+    <div>
+        <label>Price:</label>
+        <input type='text' name='price' value='<%= isEdit ? productInfo.price : ""%>' placeholder="Price of the product"/>
+    </div>
+    <div>
+        <label>Description:</label>
+        <input type='text' name='description' value='<%= isEdit ? productInfo.description : ""%>' placeholder="Description of the product"/>
+    </div>
+    <div>
+        <label>URL:</label>
+        <input type='text' name='imageUrl' value='<%= isEdit ? productInfo.imageUrl : ""%>' placeholder="URL for the product"/>
+    </div>
+    <% if(isEdit) {%>
+    <input type='hidden' name='productId' value='<%= isEdit ? productInfo._id : null%>'/>
+    <%}%>
+    <div>
+        <button type='submit'><%= isEdit ? 'Update Product' : 'Add product' %></button>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>"/>
+    </div>
+</form>
+
+<%- include('../includes/footer.ejs') %>

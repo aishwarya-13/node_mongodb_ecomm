@@ -1,0 +1,17 @@
+<%- include('../includes/nav.ejs') %>
+<%- include('../includes/head.ejs') %>
+
+<div>
+    <form action='/add-user' method='POST'>
+        <span>
+            <label>Username:</label>
+            <input type='text' placeholder='Enter username' value=''/>
+        </span>
+        <span>
+            <label>Email:</label>
+            <input type='text' placeholder='Enter email' value=''/>
+        </span>
+        <button type='submit'>Add user</button>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>"/>
+    </form>
+</div>
